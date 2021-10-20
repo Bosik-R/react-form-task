@@ -1,7 +1,19 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-body {
-  background-image: url('images/backgroundImage.jpg');
-}
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  h1 {
+    font-family: 'Dancing Script', cursive;
+  }
 `;
+
+//font-family: 'Dancing Script', cursive;
