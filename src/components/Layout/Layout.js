@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { GlobalStyles } from '../../styles/globalStyles';
 import Header from '../Header/Header';
 import FormComponent from '../FormComponent/FormComponent';
-import Slider from '../Slider/Slider';
+import Feedback from '../Feedback/Feedback';
 
 const Container = styled.div`
 	width: 100vw;
@@ -36,7 +36,7 @@ const Layout = () => {
 			<ContentWrapper>
 				<Content>
 					<FormComponent />
-					<Slider />
+					<Feedback />
 				</Content>
 			</ContentWrapper>
 		</Container>

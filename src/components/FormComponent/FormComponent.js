@@ -29,7 +29,9 @@ const FormComponent = () => {
 
 	const Error = ({ name }) => (
 		<Field name={name} subscription={{ error: true, touched: true }}>
-			{({ meta: { error, touched } }) => (error && touched ? <S.ErrorMessage>{error}</S.ErrorMessage> : null)}
+			{({ meta: { error, touched } }) =>
+				error && touched ? <S.ErrorMessage>{error}</S.ErrorMessage> : null
+			}
 		</Field>
 	);
 
@@ -55,55 +57,88 @@ const FormComponent = () => {
 					</Field>
 
 					<Field name='type'>
-						{({ input, meta: { valid, error, active, touched } }) => (
+						{({ input, meta: { valid, error, touched } }) => (
 							<S.InputWrapper>
 								<S.Label>Dish Type</S.Label>
-								<S.Select {...input} isValid={valid} error={error && touched && !active ? true : false}>
+								<S.Select {...input} isValid={valid} error={error && touched ? true : false}>
 									<option />
 									<option value='pizza'>Pizza</option>
 									<option value='soup'>Soup</option>
 									<option value='sandwich'>Sandwich</option>
 								</S.Select>
-								<Error name='name' />
-								{/* <pre style={{ color: 'white' }}>{JSON.stringify(meta, undefined, 2)}</pre> */}
+								<Error name='type' />
 							</S.InputWrapper>
 						)}
 					</Field>
-					<div>
-						<label>Dish type</label>
-						<Field name='type' component='select'>
-							<option />
-							<option value='pizza'>Pizza</option>
-							<option value='soup'>Soup</option>
-							<option value='sandwich'>Sandwich</option>
-						</Field>
-					</div>
-
-					<div>
-						<label>Preparation time</label>
-						<Field name='preparation_time' component='input' type='time' step='1' />
-					</div>
+					<Field name='preparationTime'>
+						{({ input, meta: { error, touched } }) => (
+							<S.InputWrapper>
+								<S.Label>Preparation time</S.Label>
+								<S.Input {...input} type='time' step='1' error={error && touched ? true : false} />
+								<Error name='preparationTime' />
+							</S.InputWrapper>
+						)}
+					</Field>
 
 					<Condition when='type' is='pizza'>
+						<Field name='noOfSlices'>
+							{({ input, meta: { error, touched } }) => (
+								<S.InputWrapper>
+									<S.Label>Number of slices</S.Label>
+									<S.Input
+										{...input}
+										type='number'
+										placeholder='8'
+										min='4'
+										max='100'
+										error={error && touched ? true : false}
+									/>
+									<Error name='noOfSlices' />
+								</S.InputWrapper>
+							)}
+						</Field>
+
 						<div>
-							<label>Number of slices</label>
-							<Field name='noOfSlices' component='input' type='number' placeholder='8' min='4' max='100' />
+							<label></label>
+							<Field name='noOfSlices' component='input' type='number' />
 						</div>
 						<div>
 							<label>Diameter</label>
-							<Field name='diameter' component='input' type='number' step='0.1' placeholder='35' min='28' max='55' />
+							<Field
+								name='diameter'
+								component='input'
+								type='number'
+								step='0.1'
+								placeholder='35'
+								min='28'
+								max='55'
+							/>
 						</div>
 					</Condition>
 					<Condition when='type' is='soup'>
 						<div>
 							<label>Spiciness scale</label>
-							<Field name='spicinessScale' component='input' type='number' placeholder='1' min='1' max='10' />
+							<Field
+								name='spicinessScale'
+								component='input'
+								type='number'
+								placeholder='1'
+								min='1'
+								max='10'
+							/>
 						</div>
 					</Condition>
 					<Condition when='type' is='sandwich'>
 						<div>
 							<label>Slices of bread</label>
-							<Field name='slices_of_bread' component='input' type='number' placeholder='1' min='1' max='100' />
+							<Field
+								name='slices_of_bread'
+								component='input'
+								type='number'
+								placeholder='1'
+								min='1'
+								max='100'
+							/>
 						</div>
 					</Condition>
 
@@ -113,7 +148,7 @@ const FormComponent = () => {
 							Reset
 						</button>
 					</div>
-					<pre>{JSON.stringify(values, 0, 2)}</pre>
+					<pre style={{ color: 'white' }}>{JSON.stringify(values, 0, 2)}</pre>
 				</S.FormWrapper>
 			)}
 		</Form>

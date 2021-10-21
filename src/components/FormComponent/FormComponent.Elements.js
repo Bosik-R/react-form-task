@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const FormWrapper = styled.form`
 	max-width: 500px;
@@ -14,30 +14,33 @@ export const InputWrapper = styled.div`
 	position: relative;
 	width: 100%;
 	padding: 10px;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 	display: flex;
 	justify-content: space-between;
 `;
 
 export const Label = styled.label`
 	color: #ffffff;
-	//color: #009d00;
 `;
 
-export const Input = styled.input`
+const sharedStyles = css`
 	max-width: 300px;
 	width: 100%;
 	border: 2px solid transparent;
+	background-color: #ffffff;
+	padding: 10px;
+	outline-style: none;
 	${({ isValid }) => isValid && 'border: 2px solid #009d00;'};
 	${({ error }) => error && 'border: 2px solid #ff0000;'};
+`;
+
+export const Input = styled.input`
+	${sharedStyles}
 	${({ active }) => active && 'border-bottom: 2px solid #0080ff;'};
-	background-color: #ffffff;
-	padding: 5px 10px;
-	outline-style: none;
 `;
 
 export const Select = styled.select`
-	${Input};
+	${sharedStyles}
 `;
 
 export const ErrorMessage = styled.span`
