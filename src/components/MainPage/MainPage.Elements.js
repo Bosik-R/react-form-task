@@ -4,24 +4,23 @@ import { Check } from '@styled-icons/entypo/Check';
 
 export const FormWrapper = styled.form`
 	position: relative;
+	max-width: 730px;
 	width: 100%;
-	height: 520px;
+	height: 540px;
 	padding: 20px;
 	background-color: rgba(0, 0, 0, 0.7);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
-
-	@media (max-width: 1024px) {
-		width: 100%;
-	}
 `;
+
 export const Title = styled.h1`
 	margin: 10px;
 `;
 
-export const FormContent = styled.div``;
+export const FormContent = styled.div`
+	width: 100%;
+`;
 
 export const FieldWrapper = styled.div`
 	position: relative;
@@ -96,23 +95,25 @@ export const ErrorMessage = styled.span`
 `;
 
 export const BtnWrapper = styled.div`
+	position: absolute;
+	bottom: 20px;
 	max-width: 540px;
 	width: 100%;
 	padding: 10px 30px;
 	display: flex;
 	justify-content: flex-end;
-	gap: 50px;
+	gap: 30px;
 `;
 
 const btnSharedStyles = css`
-	padding: 10px 20px;
 	background-color: transparent;
 	border: 2px solid;
 	font-size: 20px;
 	font-weight: bold;
 `;
-export const BtnSubmit = styled.button`
+export const BtnOrder = styled.button`
 	${btnSharedStyles}
+	padding: 10px 55px;
 	border-color: green;
 	color: green;
 	transition: all 0.5s ease;
@@ -125,6 +126,7 @@ export const BtnSubmit = styled.button`
 
 export const BtnReset = styled.button`
 	${btnSharedStyles}
+	padding: 10px 20px;
 	border-color: red;
 	color: red;
 	transition: all 0.5s ease;

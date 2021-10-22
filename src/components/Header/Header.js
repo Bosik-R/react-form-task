@@ -10,12 +10,10 @@ const Header = () => {
 		<S.Wrapper>
 			<S.Title>Your path to delicious eating</S.Title>
 			<S.Nav>
-				<S.Btn>
-					<S.BtnText>menu</S.BtnText>
-				</S.Btn>
-				<S.Btn>
-					<S.BtnText>orders</S.BtnText>
-				</S.Btn>
+				<S.LinkMainPage to='/'>menu</S.LinkMainPage>
+				<S.LinkOrder to='/order' open={order}>
+					orders
+				</S.LinkOrder>
 			</S.Nav>
 		</S.Wrapper>
 	);

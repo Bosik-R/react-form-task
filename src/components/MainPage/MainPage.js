@@ -1,43 +1,24 @@
 import { Form, Field } from 'react-final-form';
-import * as S from './FormComponent.Elements';
+import * as S from './MainPage.Elements';
 import { errorMessage } from '../../utils/errorMessages';
 import { useOrderContext } from '../../globalContext/ContextProvider';
+import { submitHandler } from '../../utils/submitHandler';
 
-const FormComponent = () => {
-	const { setOrder } = useOrderContext();
+const MainPage = () => {
+	const { order, setOrder } = useOrderContext();
+	console.log(order);
 
 	const onSubmit = async (values) => {
-		// const newValues = {
-		// 	name: values.name,
-		// 	type: values.type,
-		// 	preparation_time: values.preparation_time,
-		// 	spiciness_scale: parseInt(values.spiciness_scale),
-		// };
-
-		//const float = parseInt(values.diameter);
-
-		console.log(parseFloat(values.diameter));
-		// let newValues;
-
-		// if (values.type === 'pizza') {
-		// 	newValues = { ...constValues, no_of_slices: values.no_of_slices, diameter: values.diameter };
-		// }
-		// if (values.type === 'soupe') {
-		// 	newValues = { ...constValues, spiciness_scale: values.spiciness_scale };
-		// }
-		// if (values.type === 'sandwich') {
-		// 	newValues = { ...constValues, slices_of_bread: values.slices_of_bread };
-		// }
-
-		// console.log(constValues);
-		// const method = {
-		// 	method: 'POST',
-		// 	body: JSON.stringify(newValues),
-		// 	headers: { 'Content-Type': 'application/json' },
-		// };
-		// const response = await fetch('https://frosty-wood-6558.getsandbox.com:443/dishes', method);
-		// const data = await response.json();
-		// setOrder(data);
+		const method = {
+			method: 'POST',
+			body: JSON.stringify(submitHandler(values)),
+			headers: { 'Content-Type': 'application/json' },
+		};
+		if (order) {
+			const response = await fetch('https://frosty-wood-6558.getsandbox.com:443/dishes', method);
+			const data = await response.json();
+			setOrder(data);
+		}
 	};
 
 	const Condition = ({ when, is, children }) => {
@@ -50,7 +31,9 @@ const FormComponent = () => {
 
 	const Error = ({ name }) => (
 		<Field name={name} subscription={{ error: true, touched: true }}>
-			{({ meta: { error, touched } }) => (error && touched ? <S.ErrorMessage>{error}</S.ErrorMessage> : null)}
+			{({ meta: { error, touched } }) =>
+				error && touched ? <S.ErrorMessage>{error}</S.ErrorMessage> : null
+			}
 		</Field>
 	);
 
@@ -60,9 +43,8 @@ const FormComponent = () => {
 				<S.FormWrapper
 					onSubmit={(event) => {
 						handleSubmit(event);
-						//form.restart();
-					}}
-				>
+						form.restart();
+					}}>
 					<S.Title>delicious food at your fingertips</S.Title>
 					<S.FormContent>
 						<Field name='name' placeholder='Hexocean Pizza'>
@@ -113,7 +95,14 @@ const FormComponent = () => {
 									<S.FieldWrapper>
 										<S.Label>Number of slices</S.Label>
 										<S.InputWrapper>
-											<S.Input {...input} type='number' placeholder='8' min='4' max='100' error={error && touched} />
+											<S.Input
+												{...input}
+												type='number'
+												placeholder='8'
+												min='4'
+												max='100'
+												error={error && touched}
+											/>
 											<Error name='no_of_slices' />
 											<S.InputChecked valid={valid} />
 										</S.InputWrapper>
@@ -125,7 +114,15 @@ const FormComponent = () => {
 									<S.FieldWrapper>
 										<S.Label>Diameter</S.Label>
 										<S.InputWrapper>
-											<S.Input {...input} type='number' step='0.1' placeholder='35' min='28' max='55' error={error && touched} />
+											<S.Input
+												{...input}
+												type='number'
+												step='0.1'
+												placeholder='35'
+												min='28'
+												max='55'
+												error={error && touched}
+											/>
 											<Error name='diameter' />
 											<S.InputChecked valid={valid} />
 										</S.InputWrapper>
@@ -139,7 +136,14 @@ const FormComponent = () => {
 									<S.FieldWrapper>
 										<S.Label>Spiciness scale</S.Label>
 										<S.InputWrapper>
-											<S.Input {...input} type='number' placeholder='1' min='1' max='10' error={error && touched} />
+											<S.Input
+												{...input}
+												type='number'
+												placeholder='1'
+												min='1'
+												max='10'
+												error={error && touched}
+											/>
 											<Error name='spiciness_scale' />
 											<S.InputChecked valid={valid} />
 										</S.InputWrapper>
@@ -153,7 +157,14 @@ const FormComponent = () => {
 									<S.FieldWrapper>
 										<S.Label>Slices of bread</S.Label>
 										<S.InputWrapper>
-											<S.Input {...input} type='number' placeholder='1' min='1' max='100' error={error && touched} />
+											<S.Input
+												{...input}
+												type='number'
+												placeholder='1'
+												min='1'
+												max='100'
+												error={error && touched}
+											/>
 											<Error name='slices_of_bread' />
 											<S.InputChecked valid={valid} />
 										</S.InputWrapper>
@@ -163,10 +174,8 @@ const FormComponent = () => {
 						</Condition>
 					</S.FormContent>
 					<S.BtnWrapper>
-						<S.BtnSubmit type='submit'>Submit</S.BtnSubmit>
-						<S.BtnReset type='button' onClick={form.reset}>
-							Reset
-						</S.BtnReset>
+						<S.BtnOrder type='submit'>Order</S.BtnOrder>
+						<S.BtnReset onClick={form.reset}>Reset</S.BtnReset>
 					</S.BtnWrapper>
 					<S.PRE>{JSON.stringify(values, 0, 2)}</S.PRE>
 				</S.FormWrapper>
@@ -174,6 +183,5 @@ const FormComponent = () => {
 		</Form>
 	);
 };
-//{/* <Field name='type'>{(fieldState) => <pre style={{ color: 'white' }}>{JSON.stringify(fieldState, undefined, 2)}</pre>}</Field> */}
 
-export default FormComponent;
+export default MainPage;

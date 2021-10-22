@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.header`
 	position: absolute;
@@ -23,34 +24,26 @@ export const Nav = styled.nav`
 	left: 50%;
 	bottom: -60px;
 	display: flex;
+	gap: 40px;
 	background: transparent;
 	transform: translateX(-50%);
+	overflow: hidden;
 `;
 
-export const Btn = styled.button`
-	height: 60px;
-	width: 100px;
+export const LinkMainPage = styled(Link)`
+	padding: 20px 40px;
 	background-color: rgba(0, 0, 0, 0.8);
-	border-bottom-left-radius: 100px;
-	border-bottom-right-radius: 100px;
 	margin: 0 15px;
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
 	border: 1px solid rgba(251, 0, 6, 0.8);
-	border-top: 1px solid rgba(0, 0, 0, 0.8);
-	z-index: 1;
+	border-top: none;
 
 	&:hover {
 		background-color: rgba(251, 0, 6, 0.8);
 		color: #ffffff;
-		border-top: 1px solid rgba(251, 0, 6, 0.8);
 	}
 `;
 
-export const BtnText = styled.span`
-	color: #ffffff;
-	font-size: 20px;
-	font-weight: bold;
-	margin-bottom: 25px;
+export const LinkOrder = styled(LinkMainPage)`
+	transform: translateY(${({ open }) => (open ? '0' : '-100px')});
+	transition: translateY 0.5s ease;
 `;

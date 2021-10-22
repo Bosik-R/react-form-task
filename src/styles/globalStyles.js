@@ -18,6 +18,11 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Dancing Script', cursive;
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   input, select {
     appearance: none;
     border: none;
