@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.header`
 	position: absolute;
+	top: 0;
 	width: 100%;
 	height: 100px;
 	display: flex;

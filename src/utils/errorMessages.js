@@ -9,22 +9,26 @@ export const errorMessage = (values) => {
 	if (!values.type) {
 		errors.type = 'Required';
 	}
+
+	if (!values.preparation_time) {
+		errors.preparation_time = 'Required';
+	}
 	if (values.type === 'pizza') {
-		if (!values.street) {
-			errors.noOfSlices = 'Required';
+		if (!values.no_of_slices) {
+			errors.no_of_slices = 'Required';
 		}
 		if (!values.diameter) {
 			errors.diameter = 'Required';
 		}
 	}
 	if (values.type === 'soup') {
-		if (!values.spicinessScale) {
-			errors.spicinessScale = 'Required';
+		if (!values.spiciness_scale) {
+			errors.spiciness_scale = 'Required';
 		}
 	}
 	if (values.type === 'sandwich') {
-		if (!values.slicesOfBread) {
-			errors.slicesOfBread = 'Required';
+		if (!values.slices_of_bread) {
+			errors.slices_of_bread = 'Required';
 		}
 	}
 	return errors;

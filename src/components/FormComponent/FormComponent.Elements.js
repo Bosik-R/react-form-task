@@ -1,52 +1,145 @@
 import styled, { css } from 'styled-components';
+import { DownArrow } from '@styled-icons/boxicons-solid/DownArrow';
+import { Check } from '@styled-icons/entypo/Check';
 
 export const FormWrapper = styled.form`
-	max-width: 500px;
+	position: relative;
 	width: 100%;
+	height: 520px;
 	padding: 20px;
 	background-color: rgba(0, 0, 0, 0.7);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
+
+	@media (max-width: 1024px) {
+		width: 100%;
+	}
+`;
+export const Title = styled.h1`
+	margin: 10px;
+`;
+
+export const FormContent = styled.div``;
+
+export const FieldWrapper = styled.div`
+	position: relative;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
 `;
 
 export const InputWrapper = styled.div`
 	position: relative;
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 15px;
-	display: flex;
-	justify-content: space-between;
+	padding-right: 20px;
 `;
 
 export const Label = styled.label`
+	width: 150px;
 	color: #ffffff;
 `;
 
 const sharedStyles = css`
-	max-width: 300px;
-	width: 100%;
-	border: 2px solid transparent;
+	width: 300px;
+	border: none;
+	border-bottom: 3px solid transparent;
 	background-color: #ffffff;
 	padding: 10px;
-	outline-style: none;
-	${({ isValid }) => isValid && 'border: 2px solid #009d00;'};
-	${({ error }) => error && 'border: 2px solid #ff0000;'};
+	${({ error }) => error && 'border-bottom-color: #ff0000;'};
 `;
 
 export const Input = styled.input`
 	${sharedStyles}
-	${({ active }) => active && 'border-bottom: 2px solid #0080ff;'};
 `;
 
 export const Select = styled.select`
 	${sharedStyles}
+	position: relative;
+`;
+
+export const SelectArrow = styled(DownArrow)`
+	position: absolute;
+	right: 35px;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 15px;
+	z-index: 2;
+`;
+
+export const InputChecked = styled(Check)`
+	position: absolute;
+	right: -10px;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+	opacity: ${({ valid }) => (valid ? '1' : '0')};
+	color: #00c100;
+	height: 30px;
+	transition: opacity 0.5s ease;
+`;
+
+export const Option = styled.option`
+	font-size: 18px;
 `;
 
 export const ErrorMessage = styled.span`
 	position: absolute;
-	right: 15px;
-	bottom: -15px;
-	font-size: 14px;
+	right: 20px;
+	bottom: -20px;
+	font-size: 15px;
 	color: #ff0000;
+`;
+
+export const BtnWrapper = styled.div`
+	max-width: 540px;
+	width: 100%;
+	padding: 10px 30px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 50px;
+`;
+
+const btnSharedStyles = css`
+	padding: 10px 20px;
+	background-color: transparent;
+	border: 2px solid;
+	font-size: 20px;
+	font-weight: bold;
+`;
+export const BtnSubmit = styled.button`
+	${btnSharedStyles}
+	border-color: green;
+	color: green;
+	transition: all 0.5s ease;
+
+	&:hover {
+		color: white;
+		background-color: green;
+	}
+`;
+
+export const BtnReset = styled.button`
+	${btnSharedStyles}
+	border-color: red;
+	color: red;
+	transition: all 0.5s ease;
+
+	&:hover {
+		color: white;
+		background-color: red;
+	}
+`;
+
+export const PRE = styled.pre`
+	position: absolute;
+	bottom: -150px;
+	left: 50%;
+	background-color: black;
+	padding: 10px;
+	color: white;
 `;

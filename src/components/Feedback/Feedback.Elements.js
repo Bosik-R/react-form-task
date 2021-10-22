@@ -1,31 +1,43 @@
 import styled from 'styled-components';
 
-export const ContentWrapper = styled.div`
-	max-width: 300px;
+export const FeedbackWrapper = styled.div`
+	max-width: 400px;
 	width: 100%;
-	height: 400px;
+	height: 500px;
+
+	@media (max-width: 1024px) {
+		width: 100%;
+	}
 `;
 
-export const Content = styled.div`
+export const ContentWrapper = styled.div`
 	position: relative;
 	width: 100%;
 	height: 100%;
 `;
 
-export const Image = styled.img`
+export const ContentImage = styled.img`
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 `;
 
-export const ContentText = styled.q`
+export const Content = styled.div`
 	position: absolute;
-	width: 90%;
-	top: 10px;
-	left: 50%;
-	transform: translateX(-50%);
-	padding: 8px;
-	border-radius: 10px;
-	background-color: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	height: 50%;
+	bottom: 0;
+	left: 0;
+	padding: 15px 10px;
+	background-color: rgba(0, 0, 0, 0.6);
 	color: #ffffff;
+`;
+
+export const ContentText = styled.q`
+	padding: 15px 10px;
+	font-size: 16px;
+`;
+
+export const Author = styled.p`
+	margin-bottom: 10px;
 `;

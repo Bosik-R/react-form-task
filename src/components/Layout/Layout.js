@@ -6,26 +6,29 @@ import FormComponent from '../FormComponent/FormComponent';
 import Feedback from '../Feedback/Feedback';
 
 const Container = styled.div`
+	position: relative;
 	width: 100vw;
 	height: 100vh;
 	background-image: url('images/backgroundImage.jpg');
+	display: grid;
+	place-items: center;
 `;
 
-const ContentWrapper = styled.div`
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	//margin-top: 70px;
-`;
 const Content = styled.main`
 	display: flex;
-	max-width: 1024px;
+	max-width: 730px;
 	width: 100%;
-	min-height: 400px;
-	margin: 10px;
-	flex-wrap: wrap;
+
+	/* @media (max-width: 1024px) {
+		width: 500px;
+		flex-direction: column;
+		align-items: center;
+		juatify-content: center;
+	}
+
+	@media (max-width: 550px) {
+		width: 300px;
+	} */
 `;
 
 const Layout = () => {
@@ -33,12 +36,10 @@ const Layout = () => {
 		<Container>
 			<GlobalStyles />
 			<Header />
-			<ContentWrapper>
-				<Content>
-					<FormComponent />
-					<Feedback />
-				</Content>
-			</ContentWrapper>
+			<Content>
+				<FormComponent />
+				{/* <Feedback /> */}
+			</Content>
 		</Container>
 	);
 };
