@@ -38,7 +38,7 @@ const MainPage = () => {
 				<S.FormWrapper
 					onSubmit={(event) => {
 						handleSubmit(event);
-						//form.restart();
+						form.restart();
 					}}
 				>
 					<S.Title>delicious food at your fingertips</S.Title>

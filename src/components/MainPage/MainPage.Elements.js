@@ -215,12 +215,3 @@ export const BtnReset = styled.button`
 		background-color: red;
 	}
 `;
-
-export const PRE = styled.pre`
-	position: absolute;
-	bottom: -150px;
-	left: 50%;
-	background-color: black;
-	padding: 10px;
-	color: white;
-`;
