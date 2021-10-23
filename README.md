@@ -1,6 +1,6 @@
 # React Order Form
 
-# project live preview : https://order-form.tomasz-rosik.pl/
+# project live preview : https://react-order-form.tomasz-rosik.pl/
 
 This project uses React Final-Form (previously Redux-Form). 
 The inputs have simple validations and some of them are conditionally shown,
