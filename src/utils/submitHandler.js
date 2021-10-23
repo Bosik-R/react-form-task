@@ -8,7 +8,6 @@ export const submitHandler = (values) => {
 	if (values.type === 'pizza') {
 		const order = {
 			...constValue,
-			preparation_time: values.preparation_time,
 			no_of_slices: parseInt(values.no_of_slices),
 			diameter: parseFloat(values.diameter),
 		};
@@ -19,7 +18,6 @@ export const submitHandler = (values) => {
 		const order = {
 			name: values.name,
 			type: values.type,
-			preparation_time: values.preparation_time,
 			spiciness_scale: parseInt(values.spiciness_scale),
 		};
 		return order;

@@ -8,7 +8,6 @@ import { parsePrepTime } from '../../utils/parsePrepTime';
 const Order = () => {
 	const [data, setData] = useState(null);
 	const { order } = useOrderContext();
-	console.log(order);
 
 	useEffect(() => {
 		if (order) setData(orderDescription(order));
