@@ -4,16 +4,15 @@ import { useOrderContext } from '../../globalContext/ContextProvider';
 
 const Header = () => {
 	const { order } = useOrderContext();
-	console.log(order);
 
 	return (
 		<S.Wrapper>
 			<S.Title>Your path to delicious eating</S.Title>
 			<S.Nav>
-				<S.LinkMainPage to='/'>menu</S.LinkMainPage>
-				<S.LinkOrder to='/order' open={order}>
-					orders
-				</S.LinkOrder>
+				<S.LinksWrapper open={order}>
+					<S.LinkMainPage to='/'>order form</S.LinkMainPage>
+					<S.LinkOrder to='/order'>your order</S.LinkOrder>
+				</S.LinksWrapper>
 			</S.Nav>
 		</S.Wrapper>
 	);

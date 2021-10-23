@@ -17,7 +17,9 @@ export const submitHandler = (values) => {
 
 	if (values.type === 'soup') {
 		const order = {
-			...constValue,
+			name: values.name,
+			type: values.type,
+			preparation_time: values.preparation_time,
 			spiciness_scale: parseInt(values.spiciness_scale),
 		};
 		return order;

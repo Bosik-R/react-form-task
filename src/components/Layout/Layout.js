@@ -7,12 +7,19 @@ import Order from '../Order/Order';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 const Container = styled.div`
-	position: relative;
-	width: 100vw;
-	height: 100vh;
-	background-image: url('images/backgroundImage.jpg');
-	display: grid;
-	place-items: center;
+	width: 100%;
+`;
+
+const MainContent = styled.main`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	padding-top: 30px;
+	justify-content: center;
+
+	@media (max-width: 425px) {
+		padding-top: 0;
+	}
 `;
 
 const Layout = () => {
@@ -21,10 +28,12 @@ const Layout = () => {
 			<BrowserRouter>
 				<GlobalStyles />
 				<Header />
-				<Switch>
-					<Route exact path='/' component={MainPage} />
-					<Route path='/order' component={Order} />
-				</Switch>
+				<MainContent>
+					<Switch>
+						<Route exact path='/' component={MainPage} />
+						<Route path='/order' component={Order} />
+					</Switch>
+				</MainContent>
 			</BrowserRouter>
 		</Container>
 	);

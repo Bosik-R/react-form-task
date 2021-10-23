@@ -5,8 +5,7 @@ import { useOrderContext } from '../../globalContext/ContextProvider';
 import { submitHandler } from '../../utils/submitHandler';
 
 const MainPage = () => {
-	const { order, setOrder } = useOrderContext();
-	console.log(order);
+	const { setOrder } = useOrderContext();
 
 	const onSubmit = async (values) => {
 		const method = {
@@ -14,11 +13,9 @@ const MainPage = () => {
 			body: JSON.stringify(submitHandler(values)),
 			headers: { 'Content-Type': 'application/json' },
 		};
-		if (order) {
-			const response = await fetch('https://frosty-wood-6558.getsandbox.com:443/dishes', method);
-			const data = await response.json();
-			setOrder(data);
-		}
+		const response = await fetch('https://frosty-wood-6558.getsandbox.com:443/dishes', method);
+		const data = await response.json();
+		setOrder(data);
 	};
 
 	const Condition = ({ when, is, children }) => {
@@ -31,20 +28,19 @@ const MainPage = () => {
 
 	const Error = ({ name }) => (
 		<Field name={name} subscription={{ error: true, touched: true }}>
-			{({ meta: { error, touched } }) =>
-				error && touched ? <S.ErrorMessage>{error}</S.ErrorMessage> : null
-			}
+			{({ meta: { error, touched } }) => (error && touched ? <S.ErrorMessage>{error}</S.ErrorMessage> : null)}
 		</Field>
 	);
 
 	return (
 		<Form onSubmit={onSubmit} validate={(values) => errorMessage(values)}>
-			{({ handleSubmit, values, form }) => (
+			{({ handleSubmit, form }) => (
 				<S.FormWrapper
 					onSubmit={(event) => {
 						handleSubmit(event);
-						form.restart();
-					}}>
+						//form.restart();
+					}}
+				>
 					<S.Title>delicious food at your fingertips</S.Title>
 					<S.FormContent>
 						<Field name='name' placeholder='Hexocean Pizza'>
@@ -95,14 +91,7 @@ const MainPage = () => {
 									<S.FieldWrapper>
 										<S.Label>Number of slices</S.Label>
 										<S.InputWrapper>
-											<S.Input
-												{...input}
-												type='number'
-												placeholder='8'
-												min='4'
-												max='100'
-												error={error && touched}
-											/>
+											<S.Input {...input} type='number' placeholder='8' min='4' max='100' error={error && touched} />
 											<Error name='no_of_slices' />
 											<S.InputChecked valid={valid} />
 										</S.InputWrapper>
@@ -114,15 +103,7 @@ const MainPage = () => {
 									<S.FieldWrapper>
 										<S.Label>Diameter</S.Label>
 										<S.InputWrapper>
-											<S.Input
-												{...input}
-												type='number'
-												step='0.1'
-												placeholder='35'
-												min='28'
-												max='55'
-												error={error && touched}
-											/>
+											<S.Input {...input} type='number' step='0.1' placeholder='35' min='28' max='55' error={error && touched} />
 											<Error name='diameter' />
 											<S.InputChecked valid={valid} />
 										</S.InputWrapper>
@@ -136,14 +117,7 @@ const MainPage = () => {
 									<S.FieldWrapper>
 										<S.Label>Spiciness scale</S.Label>
 										<S.InputWrapper>
-											<S.Input
-												{...input}
-												type='number'
-												placeholder='1'
-												min='1'
-												max='10'
-												error={error && touched}
-											/>
+											<S.Input {...input} type='number' placeholder='1' min='1' max='10' error={error && touched} />
 											<Error name='spiciness_scale' />
 											<S.InputChecked valid={valid} />
 										</S.InputWrapper>
@@ -157,14 +131,7 @@ const MainPage = () => {
 									<S.FieldWrapper>
 										<S.Label>Slices of bread</S.Label>
 										<S.InputWrapper>
-											<S.Input
-												{...input}
-												type='number'
-												placeholder='1'
-												min='1'
-												max='100'
-												error={error && touched}
-											/>
+											<S.Input {...input} type='number' placeholder='1' min='1' max='100' error={error && touched} />
 											<Error name='slices_of_bread' />
 											<S.InputChecked valid={valid} />
 										</S.InputWrapper>
@@ -177,7 +144,6 @@ const MainPage = () => {
 						<S.BtnOrder type='submit'>Order</S.BtnOrder>
 						<S.BtnReset onClick={form.reset}>Reset</S.BtnReset>
 					</S.BtnWrapper>
-					<S.PRE>{JSON.stringify(values, 0, 2)}</S.PRE>
 				</S.FormWrapper>
 			)}
 		</Form>

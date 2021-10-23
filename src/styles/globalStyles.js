@@ -1,6 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+  html { 
+    background: url(images/bgImage.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
   *,
   *::before,
   *::after {
@@ -28,7 +36,6 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     margin: 0;
     font-family: inherit;
-    font-size: inherit;
     outline: none;
   }
 
