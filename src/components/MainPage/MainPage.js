@@ -18,6 +18,11 @@ const MainPage = () => {
 		setOrder(data);
 	};
 
+	const handleReset = (form) => {
+		form.reset();
+		setOrder(null);
+	};
+
 	const Condition = ({ when, is, children }) => {
 		return (
 			<Field name={when} subscription={{ value: true }}>
@@ -142,7 +147,7 @@ const MainPage = () => {
 					</S.FormContent>
 					<S.BtnWrapper>
 						<S.BtnOrder type='submit'>Order</S.BtnOrder>
-						<S.BtnReset onClick={form.reset}>Reset</S.BtnReset>
+						<S.BtnReset onClick={() => handleReset(form)}>Reset</S.BtnReset>
 					</S.BtnWrapper>
 				</S.FormWrapper>
 			)}

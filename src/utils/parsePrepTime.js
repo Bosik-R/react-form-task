@@ -1,5 +1,7 @@
-export const parsePrepTime = (prep) => {
-	const arr = prep.split(':');
-	const hoursMinSecs = { hours: parseInt(arr[0]), minutes: parseInt(arr[1]), seconds: parseInt(arr[2]) };
-	return hoursMinSecs;
+export const parsePrepTime = (prepTime) => {
+	const arr = prepTime.split(':');
+	const time = parseInt(arr[0]) * 3600000 + parseInt(arr[1]) * 60000 + parseInt(arr[2]) * 1000;
+	//const minutes = parseInt(arr[1]) * 60000;
+	//const seconds = parseInt(arr[2]) * 1000;
+	return time;
 };

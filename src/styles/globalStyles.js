@@ -22,8 +22,12 @@ export const GlobalStyles = createGlobalStyle`
     color: #ffffff;
   }
 
-  h1 {
-    font-family: 'Dancing Script', cursive;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: 'Caveat', cursive;
   }
 
   a {

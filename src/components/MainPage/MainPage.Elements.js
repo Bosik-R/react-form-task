@@ -20,7 +20,7 @@ export const FormWrapper = styled.form`
 		height: 530px;
 	}
 	@media (max-width: 320px) {
-		height: 490px;
+		height: 500px;
 	}
 `;
 
@@ -28,7 +28,7 @@ export const Title = styled.h1`
 	margin: 10px;
 
 	@media (max-width: 425px) {
-		font-size: 22px;
+		font-size: 18px;
 	}
 `;
 

@@ -1,6 +1,6 @@
 {
-	"short_name": "React Form Task",
-	"name": "Order Dish React Form Task",
+	"short_name": "React order form",
+	"name": "React Order Form",
 	"icons": [
 		{
 			"src": "favicon.ico",
